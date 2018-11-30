@@ -2,7 +2,7 @@
 <template>
   <v-app id="login">
     <div class="display-1 font-weight-black">
-      <v-card color="primary">
+      <v-card color="primary" class="white--text">
         <v-card-text align="center">Rescue Management System</v-card-text>
       </v-card>
     </div>
@@ -16,19 +16,13 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field
-                    id="user"
-                    prepend-icon="person"
-                    name="login"
-                    label="User ID"
-                    type="text"
+                  <v-text-field id="user"
+                    prepend-icon="person" name="login"
+                    label="User ID" type="text"
                   ></v-text-field>
-                  <v-text-field
-                    id="password"
-                    prepend-icon="lock"
-                    name="password"
-                    label="Password"
-                    type="password"
+                  <v-text-field id="password"
+                    prepend-icon="lock" name="password"
+                    label="Password" type="password"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -44,7 +38,7 @@
 
     <v-footer class="pa-3" color="primary">
       <v-spacer></v-spacer>
-      <div>&copy; Fall {{ new Date().getFullYear() }}  Team Doge</div>
+      <div class="white--text">&copy; Fall {{ new Date().getFullYear() }}  Team Doge</div>
     </v-footer>
   </v-app>
 </template>
@@ -59,9 +53,3 @@ export default {
   })
 };
 </script>
-
-<style scoped>
-template {
-  overflow-y: hidden;
-}
-</style>
