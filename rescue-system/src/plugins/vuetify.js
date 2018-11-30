@@ -6,6 +6,6 @@ Vue.use(Vuetify, {
   iconfont: 'md',
   theme: {
     primary: colors.red.darken4,
-    secondary: '#116e6e'
+    secondary: colors.cyan.lighten1
   }
 })
