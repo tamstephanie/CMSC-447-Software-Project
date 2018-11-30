@@ -61,9 +61,6 @@ export default {
 </script>
 
 <style scoped>
-div {
-  color: #ffffff;
-}
 template {
   overflow-y: hidden;
 }
