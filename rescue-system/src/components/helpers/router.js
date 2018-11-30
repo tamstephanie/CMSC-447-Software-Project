@@ -10,6 +10,8 @@ export const router = new Router({
   mode: 'history',
   routes: [
     { path: '/', component: LoginPage },
+    /* Need more paths to handle MainView and
+    subviews (EventsTable, MissionsTable, EventCreation, MissionCreation, MapView) */
 
     // If path doesn't exist, redirect to main page after logging in?
     { path: '*', redirect: '/' }
