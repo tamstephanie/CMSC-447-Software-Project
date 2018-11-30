@@ -1,11 +1,14 @@
-<!--Adapted Centered Layout template from vuetifyjs.com-->
 <template>
   <v-app id="login">
+
+    <!-- Header bar (may need to change styling) -->
     <div class="display-1 font-weight-black">
       <v-card color="primary" class="white--text">
         <v-card-text align="center">Rescue Management System</v-card-text>
       </v-card>
     </div>
+    
+    <!-- Login card at center of page -->
     <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
@@ -36,10 +39,12 @@
       </v-container>
     </v-content>
 
+    <!-- Copyright footer -->
     <v-footer class="pa-3" color="primary">
       <v-spacer></v-spacer>
       <div class="white--text">&copy; Fall {{ new Date().getFullYear() }}  Team Doge</div>
     </v-footer>
+
   </v-app>
 </template>
 
