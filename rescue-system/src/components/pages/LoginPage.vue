@@ -1,6 +1,6 @@
 <!--Adapted Centered Layout template from vuetifyjs.com-->
 <template>
-  <v-app>
+  <v-app id="login">
     <div class="display-1 font-weight-black">
       <v-card color="primary">
         <v-card-text align="center">Rescue Management System</v-card-text>
