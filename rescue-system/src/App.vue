@@ -1,36 +1,23 @@
 <template>
-  <div id="app">
-    <md-card>
-      <md-card-header>
-        <div class="md-title">Rescue Management System</div>
-      </md-card-header>
-    </md-card>
-
-
-
-    <img alt="Vue logo" src="./assets/logo.png">
-    <LoginPage />
-  </div>
+  <v-app>
+    <v-content>
+      <LoginPage />
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import LoginPage from './components/Login'
+import LoginPage from './components/pages/LoginPage'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     LoginPage
+  },
+  data() {
+    return {
+      //
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
