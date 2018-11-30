@@ -1,3 +1,4 @@
+<!--Adapted Centered Layout template from vuetifyjs.com-->
 <template>
   <v-app>
     <div class="display-1 font-weight-black">
