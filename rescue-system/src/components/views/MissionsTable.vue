@@ -16,7 +16,7 @@
             :indeterminate="props.indeterminate"
             primary
             hide-details
-            @click="toggleAll"
+            @click.stop="toggleAll"
           ></v-checkbox>
         </th>
 
@@ -34,7 +34,7 @@
     </template>
 
     <template slot="items" slot-scope="props">
-      <tr :active="props.selected" @click="props.selected = !props.selected">
+      <tr :active="props.selected" @click.stop="props.selected = !props.selected">
         <td>
           <v-checkbox :input-value="props.selected" primary hide-details></v-checkbox>
         </td>
