@@ -1,9 +1,9 @@
 <template>
-  <v-app id="main-view" style="padding: 10px 0px 0px 0px">
+  <v-app id="main-view">
 
     <!-- Navigation drawer -->
     <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp"
-      v-model="drawer" style="width: 250px" fixed app>
+      v-model="drawer" style="width: 250px" fixed app class="px-2">
       <v-list dense>
         <v-list-tile>
           <v-list-tile-title class="title font-weight-medium">Navigation</v-list-tile-title>
@@ -20,7 +20,7 @@
             </v-flex>
           </v-layout>
           
-          <v-list-tile v-else :key="item.text" @click="foo">
+          <v-list-tile v-else :key="item.text" @click.stop="foo">
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
@@ -41,22 +41,28 @@
     </v-toolbar>
 
     <!-- Main content of site that dynamically changes -->
-    <v-content flex class="px-0 py-3 ma-0">
-      <v-container fluid class="pl-0 py-3 pr-5 ma-0">
+    <!-- <v-content class="px-0 py-3 ma-0"> -->
+      <v-container fluid justify-space-around>
         <!-- Need to dynamically change view based on nav selection -->
-        <EventsTable />
+        <!-- <EventsTable />
+        <MissionsTable /> -->
+        <CreateEvent />
       </v-container>
-    </v-content>
+    <!-- </v-content> -->
 
   </v-app>
 </template>
 
 <script>
-import EventsTable from '../views/EventsTable';
+import CreateEvent from '../views/CreateEvent'
+// import EventsTable from '../views/EventsTable';
+// import MissionsTable from '../views/MissionsTable';
 
 export default {
   components: {
-    EventsTable
+    // EventsTable,
+    // MissionsTable,
+    CreateEvent
   },
   data: () => ({
     drawer: null,
