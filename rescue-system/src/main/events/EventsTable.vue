@@ -41,8 +41,8 @@
         <td class="text-xs-center">{{ props.item.uuid }}</td>
         <td class="text-xs-center">{{ props.item.date }}</td>
         <td class="text-xs-center">{{ props.item.address }}</td>
-        <td class="text-xs-center">{{ props.item.victims }}</td>
         <td class="text-xs-center">{{ props.item.priority }}</td>
+        <td class="text-xs-center">{{ props.item.victims }}</td>
         <td class="text-xs-center">{{ props.item.status }}</td>
       </tr>
     </template>
@@ -55,11 +55,11 @@ export default {
     selected: [],
     headers: [
       { text: "ID", align: "center", sortable: true, value: "uuid" },
-      { text: "Victims", align: "center", sortable: true, value: "victims" },
-      { text: "Priority", align: "center", sortable: true, value: "priority" },
-      // phone number
-      { text: "Address", align: "center", sortable: true, value: "address" },
       { text: "Date", align: "center", sortable: true, value: "date" },
+      { text: "Address", align: "center", sortable: true, value: "address" },
+      { text: "Priority", align: "center", sortable: true, value: "priority" },
+      { text: "Victims", align: "center", sortable: true, value: "victims" },
+      // phone number
       // aid type
       // mission id
       // dispatcher id
@@ -72,8 +72,8 @@ export default {
         uuid: 1,
         date: "2018-11-30 13:05:00",
         address: "1000 Hilltop Cir, Baltimore, MD 21250",
-        victims: 4,
         priority: 5,
+        victims: 4,
         status: "unassigned"
       },
       {
@@ -81,8 +81,8 @@ export default {
         uuid: 2,
         date: "2018-11-30 14:40:00",
         address: "12932 Beethoven Blvd, Silver Spring, MD 20904",
-        victims: 5,
         priority: 3,
+        victims: 5,
         status: "in-progress"
       },
       {
@@ -90,8 +90,8 @@ export default {
         uuid: 3,
         date: "2018-11-30 14:42:00",
         address: "7716 Piney Branch Rd, Silver Spring, MD 20910",
-        victims: 20,
         priority: 1,
+        victims: 20,
         status: "assigned"
       }
     ]
