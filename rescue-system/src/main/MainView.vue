@@ -44,9 +44,10 @@
     <!-- <v-content class="px-0 py-3 ma-0"> -->
       <v-container fluid justify-space-around>
         <!-- Need to dynamically change view based on nav selection -->
-        <EventsTable />
+        <!-- <EventsTable /> -->
         <!-- <MissionsTable /> -->
         <!-- <CreateEvent /> -->
+        <Event />
       </v-container>
     <!-- </v-content> -->
 
@@ -55,12 +56,13 @@
 
 <script>
 //import CreateEvent from './events/CreateEvent'
-import EventsTable from './events/EventsTable';
+import Event from './events/Event';
 // import MissionsTable from './missions/MissionsTable';
 
 export default {
   components: {
-    EventsTable
+    Event
+    //EventsTable
     // MissionsTable,
     // CreateEvent
   },
