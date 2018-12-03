@@ -1,9 +1,9 @@
 # rescue-system
 
 ## Project setup
-```
-npm install
-```
+1. Install node (11.3.0) and npm (6.4.1)
+2. Run `npm i -g @vue/cli` to install the Vue CLI
+3. Run `npm install` to install the rest of the project
 
 ### Compiles and hot-reloads for development
 ```

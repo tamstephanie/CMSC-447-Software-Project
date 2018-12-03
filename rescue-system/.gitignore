@@ -12,8 +12,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # Packages
-package-lock.json
-package.json
+# package-lock.json
+# package.json
 
 # Editor directories and files
 .idea
