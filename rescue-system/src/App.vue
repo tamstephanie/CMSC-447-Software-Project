@@ -4,14 +4,15 @@
       <!-- Need to adjust view based on status:
        if loggedIn => <MainView /> 
        else <LoginPage /> -->
+       <!-- <LoginPage /> -->
       <MainView />
     </v-content>
   </v-app>
 </template>
 
 <script>
-// import LoginPage from './components/pages/LoginPage'
-import MainView from './components/pages/MainView'
+// import LoginPage from './login/LoginPage'
+import MainView from './main/MainView'
 
 export default {
   name: 'App',

@@ -55,10 +55,15 @@ export default {
     selected: [],
     headers: [
       { text: "ID", align: "center", sortable: true, value: "uuid" },
-      { text: "Date", align: "center", sortable: true, value: "date" },
-      { text: "Address", align: "center", sortable: true, value: "address" },
       { text: "Victims", align: "center", sortable: true, value: "victims" },
       { text: "Priority", align: "center", sortable: true, value: "priority" },
+      // phone number
+      { text: "Address", align: "center", sortable: true, value: "address" },
+      { text: "Date", align: "center", sortable: true, value: "date" },
+      // aid type
+      // mission id
+      // dispatcher id
+      // comments
       { text: "Status", align: "center", sortable: true, value: "status" }
     ],
     events: [
