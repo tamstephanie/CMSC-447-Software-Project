@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import LoginPage from '../components/LoginPage'
+// Import local files
+import LoginPage from '../login/LoginPage'
+import { CreateEvent, EventsTable, Event } from '../main/events/.'
+import { CreateMission, MissionsTable } from '../main/missions/.'
 
 Vue.use(Router);
 
