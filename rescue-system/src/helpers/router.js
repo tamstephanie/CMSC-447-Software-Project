@@ -26,7 +26,7 @@ export const router = new Router({
   ]
 });
 
-/*<li class="nav-item">
+<li class="nav-item">
   <router-link class="nav-link" to="/createEvent">Create Event</router-link>
 </li>
 <li class="nav-item">
@@ -39,11 +39,8 @@ export const router = new Router({
   <router-link class="nav-link" to="/createMission">Create Mission</router-link>
 </li>
 <li class="nav-item">
-  <router-link class="nav-link" to="/missionsTable">Missions Table</router-link>
+  <router-link class="nav-link" to="/missionsTable">Missions</router-link>
  </li>
-<li class="nav-item">
-   <router-link class="nav-link" to="/contact">contact</router-link>
- </li>*/
 
 router.beforeEach((to, from, next) => {
   // Redirect to login page if not logged in and trying to access a restricted page
