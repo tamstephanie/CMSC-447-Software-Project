@@ -38,7 +38,6 @@
             v-model="contactName"
             :rules="[v => !!v || 'Contact person\'s name is required']"
             label="Contact Name"
-            placeholder="First  Last"
             required
           ></v-text-field>
         </v-flex>
@@ -53,6 +52,23 @@
           ></v-text-field>
         </v-flex>
       </v-layout>
+
+      <v-layout class="pt-3">
+        <v-flex xs8>
+          <v-textarea
+            outline
+            name="notes"
+            label="Notes"
+            class="ma-0"
+          ></v-textarea>
+        </v-flex>
+      </v-layout>
+
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="#A9A9A9">Cancel</v-btn>
+        <v-btn color="primary" class="ml-3">Submit</v-btn>
+      </v-card-actions>
     </form>
   </v-card>
 </template>
@@ -63,7 +79,7 @@ export default {
     address: '',
     addressRules: [
       v => !!v || 'An address is required',
-      v => /\d{1,9}\s.+[,]\s.+[,]/.test(v) || 'Please follow the format'
+      v => /\d{1,9}\s.+,\s.+,\s.{2}\s\d{5}/.test(v) || 'Please follow the format'
     ],
     select: null,
     priorities: [1, 2, 3, 4, 5],
@@ -78,6 +94,7 @@ export default {
       v => !!v || 'A phone number is required',
       v => /\d{3}-\d{3}-\d{4}/.test(v) || 'Please follow the following format: XXX-XXX-XXXX'
     ],
+    notes: ''
   })
 };
 </script>
