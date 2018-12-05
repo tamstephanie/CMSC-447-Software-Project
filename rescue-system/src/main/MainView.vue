@@ -20,7 +20,7 @@
             </v-flex>
           </v-layout>
           
-          <v-list-tile v-else :key="item.text" @click.stop="foo">
+          <v-list-tile v-else :key="item.text" @click.stop="toPath">
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
@@ -46,8 +46,8 @@
         <!-- Need to dynamically change view based on nav selection -->
         <!-- <EventsTable /> -->
         <!-- <MissionsTable /> -->
-        <!-- <CreateEvent /> -->
-        <Event />
+        <CreateEvent />
+        <!-- <Event /> -->
       </v-container>
     <!-- </v-content> -->
 
@@ -55,16 +55,18 @@
 </template>
 
 <script>
-//import CreateEvent from './events/CreateEvent'
-import Event from './events/Event';
+import CreateEvent from './events/CreateEvent'
+import EventsTable from './events/EventsTable';
 // import MissionsTable from './missions/MissionsTable';
+
+import Router from '../helpers/router'
 
 export default {
   components: {
-    Event
+    // Event
     //EventsTable
     // MissionsTable,
-    // CreateEvent
+    CreateEvent
   },
   data: () => ({
     drawer: null,
@@ -78,6 +80,17 @@ export default {
   }),
   props: {
     source: String
+  },
+  method: () => {
+    toPath: () => {
+      switch(item.text) {
+        case "Events Table":
+          path = Router.routes.EventsTable;
+          break;
+        case "Create Event":
+          path = Router.routes.CreateEvent;
+      }
+    }
   }
 };
 </script>
