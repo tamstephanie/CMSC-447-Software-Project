@@ -66,11 +66,12 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="#A9A9A9">Cancel</v-btn>
+        <v-btn
+          color="#A9A9A9"
+        >Cancel</v-btn>
         <v-btn
           color="primary"
           class="ml-3"
-          to="/events"
         >Submit</v-btn>
       </v-card-actions>
     </form>
@@ -98,9 +99,7 @@ export default {
       v => !!v || 'A phone number is required',
       v => /\d{3}-\d{3}-\d{4}/.test(v) || 'Please follow the following format: XXX-XXX-XXXX'
     ],
-    notes: '',
-    loader: '',
-    loading: false
+    notes: ''
   })
 };
 </script>
