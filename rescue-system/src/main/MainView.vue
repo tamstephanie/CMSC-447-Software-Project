@@ -9,26 +9,51 @@
           <v-list-tile-title class="title font-weight-medium">Navigation</v-list-tile-title>
         </v-list-tile>
 
-        <!-- Format layout of icons & text for links -->
-        <template v-for="item in items">
-          <v-layout v-if="item.heading" :key="item.heading" row align-center>
-            <v-flex xs6>
-              <v-subheader v-if="item.heading">{{ item.heading }}</v-subheader>
-            </v-flex>
-            <v-flex xs6 class="text-xs-center">
-              <a href="#!" class="body-2 black--text">some text here</a>
-            </v-flex>
-          </v-layout>
-          
-          <v-list-tile v-else :key="item.text" @click.stop="toPath">
-            <v-list-tile-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ item.text }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </template>
+        <!-- Format layout of icons & text for links -->          
+        <v-list-tile @click.stop="">
+          <v-list-tile-action>
+            <v-icon>event_note</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Events Table</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile @click.stop="">
+          <v-list-tile-action>
+            <v-icon>notification_important</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Missions Table</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile @click.stop="">
+          <v-list-tile-action>
+            <v-icon>map</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Map View</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <!-- <v-list-tile @click.stop="">
+          <v-list-tile-action>
+            <v-icon>search</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Search</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile> -->
+
+        <v-list-tile @click.stop="">
+          <v-list-tile-action>
+            <v-icon>power_settings_new</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Log Off</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
 
@@ -44,10 +69,7 @@
     <!-- <v-content class="px-0 py-3 ma-0"> -->
       <v-container fluid justify-space-around>
         <!-- Need to dynamically change view based on nav selection -->
-        <!-- <EventsTable /> -->
-        <!-- <MissionsTable /> -->
-        <CreateEvent />
-        <!-- <Event /> -->
+        <router-view></router-view>
       </v-container>
     <!-- </v-content> -->
 
@@ -56,41 +78,24 @@
 
 <script>
 import CreateEvent from './events/CreateEvent'
-import EventsTable from './events/EventsTable';
-// import MissionsTable from './missions/MissionsTable';
+import EventsTable from './events/EventsTable'
+import MissionsTable from './missions/MissionsTable'
 
 import Router from '../helpers/router'
 
 export default {
+  name: 'Main',
   components: {
-    // Event
-    //EventsTable
-    // MissionsTable,
+    Event,
+    EventsTable,
+    MissionsTable,
     CreateEvent
   },
   data: () => ({
     drawer: null,
-    items: [   // Links in navigation drawer
-      { icon: "event_note", text: "Events Table" },
-      { icon: "notification_important", text: "Missions Table" },
-      { icon: "map", text: "Map View" },
-      { icon: "search", text: "Search" },
-      { icon: "power_settings_new", text: "Log Off" }
-    ]
   }),
   props: {
     source: String
-  },
-  method: () => {
-    toPath: () => {
-      switch(item.text) {
-        case "Events Table":
-          path = Router.routes.EventsTable;
-          break;
-        case "Create Event":
-          path = Router.routes.CreateEvent;
-      }
-    }
   }
 };
 </script>
