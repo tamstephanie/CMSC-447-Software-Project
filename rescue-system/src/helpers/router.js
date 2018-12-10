@@ -2,8 +2,10 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 // Import local files
+import MainView from '../main/MainView'
 import LoginPage from '../login/LoginPage'
-import { CreateEvent, EventsTable } from '../main/events/.'
+import CreateEvent from '../main/events/CreateEvent'
+import EventsTable from '../main/events/EventsTable'
 import MissionsTable from '../main/missions/MissionsTable'
 
 Vue.use(Router);
@@ -12,42 +14,27 @@ Vue.use(Router);
 export const router = new Router({
   mode: 'history',
   routes: [
-    { path: '/', component: LoginPage },
-    { path: '/create-event', component: CreateEvent },
-    { path: '/events', component: EventsTable },
+    { path: '/login', name: 'Login', component: LoginPage },
+    { path: '/create-event', name: 'Create Events', component: CreateEvent, adminOnly: true },
+    { path: '/events', name: 'Events', component: MainView },
     // { path: '/eventsTable/event', component: Event },
-    { path: '/missions', component: MissionsTable },
-    { path: '/map', component: MapView },
+    { path: '/missions', name: 'Missions', component: MissionsTable },
+    // { path: '/map', component: MapView },
     
     // If path doesn't exist, redirect to main page after logging in?
-    { path: '*', redirect: '/' }
+    { path: '*', redirect: '/login' }
   ]
 });
 
-// <li class="nav-item">
-//   <router-link class="nav-link" to="/createEvent">Create Event</router-link>
-// </li>
-// <li class="nav-item">
-//   <router-link class="nav-link" to="/eventsTable">Events</router-link>
-//  </li>
-// <li class="nav-item">
-//    <router-link class="nav-link" to="/eventsTable/event">Event</router-link>
-//  </li>
-// <li class="nav-item">
-//   <router-link class="nav-link" to="/missionsTable">Missions</router-link>
-//  </li>
-//  <li class="nav-item">
-//   <router-link class="nav-link" to="/map">MapView</router-link>
-// </li>
 
 router.beforeEach((to, from, next) => {
   // Redirect to login page if not logged in and trying to access a restricted page
-  const publicPage = ['/'];
+  const publicPage = ['/login', '/events'];
   const authRequired = !publicPage.includes(to.path);
   const loggedIn = localStorage.getItem('user');
 
   if (authRequired && !loggedIn) {
-    return next('/');
+    return next('/login');
   }
 
   next();
