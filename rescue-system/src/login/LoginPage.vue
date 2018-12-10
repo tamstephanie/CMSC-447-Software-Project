@@ -31,7 +31,9 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary">Login</v-btn>
+                <v-btn color="primary"
+                  @click="handleSubmit(this)"
+                >Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -49,12 +51,27 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: "LoginPage",
   data: () => ({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
+    submitted: false,
     drawer: null
-  })
+  }),
+  computed: () => ({
+    ...mapState('account', ['status'])
+  }),
+  methods: {
+    handleSubmit (e) {
+      this.submitted = true;
+      const { username, password } = this;
+      if (username && password) {
+        this.login({ username, password });
+      }
+    }
+  }
 };
 </script>
