@@ -22,8 +22,7 @@ export const router = new Router({
 
 router.beforeEach((to, from, next) => {
   // Redirect to login page if not logged in and trying to access a restricted page
-  const publicPage = ['/login', '/main', '/events',
-                      '/missions', '/map', '/create'];
+  const publicPage = ['/login', '/main'];
   const authRequired = !publicPage.includes(to.path);
   const loggedIn = localStorage.getItem('user');
 
