@@ -20,19 +20,32 @@
               <v-card-text>
                 <v-form>
                   <v-text-field id="user"
-                    prepend-icon="person" name="login"
-                    label="User ID" type="text"
+                    type="text"
+                    required
+                    prepend-icon="person"
+                    name="username"
+                    label="User ID"
+                    v-validate="'required|alpha_num'"
+                    :class="{ 'is-invalid': submitted && !username }"
+                    :rules="[v => !!v || 'User ID is required']"
                   ></v-text-field>
                   <v-text-field id="password"
-                    prepend-icon="lock" name="password"
-                    label="Password" type="password"
+                    type="password"
+                    required
+                    prepend-icon="lock"
+                    name="password"
+                    label="Password"
+                    v-validate="'required'"
+                    :class="{ 'is-invalid': submitted && !password }"
+                    :rules="[v => !!v || 'Password is required']"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="primary"
-                  @click="handleSubmit(this)"
+                  @click.prevent="handleSubmit"
+                  to='/main'
                 >Login</v-btn>
               </v-card-actions>
             </v-card>
@@ -51,7 +64,12 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import Vue from 'vue'
+import VeeValidate from 'vee-validate'
+
+import { router } from '../helpers'
+
+Vue.use(VeeValidate)
 
 export default {
   name: "LoginPage",
@@ -61,16 +79,15 @@ export default {
     submitted: false,
     drawer: null
   }),
-  computed: () => ({
-    ...mapState('account', ['status'])
-  }),
   methods: {
-    handleSubmit (e) {
+    handleSubmit(e) {
       this.submitted = true;
-      const { username, password } = this;
-      if (username && password) {
-        this.login({ username, password });
-      }
+      this.$validator.validate().then(valid => {
+        if (valid) {
+          alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.user));
+          router.push('/main')
+        }
+      });
     }
   }
 };
