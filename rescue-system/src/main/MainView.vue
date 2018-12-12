@@ -37,6 +37,15 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <v-list-tile @click="component='create'">
+          <v-list-tile-action>
+            <v-icon>add_circle</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Create Event</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
         <!-- <v-list-tile @click.stop="">
           <v-list-tile-action>
             <v-icon>search</v-icon>
