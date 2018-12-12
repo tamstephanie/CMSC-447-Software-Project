@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import './plugins/vuetify'
 
-import { router } from './helpers/router'
+import { router } from './helpers'
 import App from './App'
 
 // In development mode
