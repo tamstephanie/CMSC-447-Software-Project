@@ -10,7 +10,7 @@
         </v-list-tile>
 
         <!-- Format layout of icons & text for links -->          
-        <v-list-tile @click.stop="">
+        <v-list-tile @click="component='events'">
           <v-list-tile-action>
             <v-icon>event_note</v-icon>
           </v-list-tile-action>
@@ -19,7 +19,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile @click.stop="">
+        <v-list-tile @click="component='missions'">
           <v-list-tile-action>
             <v-icon>notification_important</v-icon>
           </v-list-tile-action>
@@ -28,7 +28,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile @click.stop="">
+        <v-list-tile @click="component='map'">
           <v-list-tile-action>
             <v-icon>map</v-icon>
           </v-list-tile-action>
@@ -46,7 +46,7 @@
           </v-list-tile-content>
         </v-list-tile> -->
 
-        <v-list-tile @click.stop="">
+        <v-list-tile to="/login">
           <v-list-tile-action>
             <v-icon>power_settings_new</v-icon>
           </v-list-tile-action>
@@ -66,36 +66,33 @@
     </v-toolbar>
 
     <!-- Main content of site that dynamically changes -->
-    <!-- <v-content class="px-0 py-3 ma-0"> -->
+    <v-content class="px-0 py-3 ma-0">
       <v-container fluid justify-space-around>
         <!-- Need to dynamically change view based on nav selection -->
-        <router-view></router-view>
+        <component v-bind:is="component" />
       </v-container>
-    <!-- </v-content> -->
+    </v-content>
 
   </v-app>
 </template>
 
 <script>
-import CreateEvent from './events/CreateEvent'
 import EventsTable from './events/EventsTable'
 import MissionsTable from './missions/MissionsTable'
-
-import Router from '../helpers/router'
+import MapView from './map/Map'
+import CreateEvent from './events/CreateEvent'
 
 export default {
   name: 'Main',
   components: {
-    Event,
-    EventsTable,
-    MissionsTable,
-    CreateEvent
+    'events': EventsTable,
+    'missions': MissionsTable,
+    'map': MapView,
+    'create': CreateEvent
   },
   data: () => ({
     drawer: null,
-  }),
-  props: {
-    source: String
-  }
+    component: 'events'
+  })
 };
 </script>
