@@ -2,7 +2,7 @@
   <v-data-table
     v-model="selected"
     :headers="headers"
-    :items="events"
+    :items="missions"
     :pagination.sync="pagination"
     select-all
     item-key="uuid"
@@ -26,6 +26,7 @@
           :key="header.text"
           :class="['column sortable', pagination.descending ? 'desc' : 'asc',
               header.value === pagination.sortBy ? 'active' : '']"
+          @click="changeSort(header.value)"
         >
           <v-icon small>arrow_upward</v-icon>
           {{ header.text }}
@@ -61,7 +62,7 @@ export default {
       { text: "# of Events", align: "center", sortable: true, value: "events" },
       { text: "Status", align: "center", sortable: true, value: "status" }
     ],
-    events: [
+    missions: [
       {
         value: false,
         uuid: 1,
@@ -93,6 +94,24 @@ export default {
   }),
   props: {
     source: String
+  },
+  methods: {
+    toggleAll () {
+      if (this.selected.length) {
+        this.selected = []
+      }
+      else {
+        this.selected = this.missions.slice()
+      }
+    },
+    changeSort (column) {
+      if (this.pagination.sortBy === column) {
+        this.pagination.descending = !this.pagination.descending
+      } else {
+        this.pagination.sortBy = column
+        this.pagination.descending = false
+      }
+    }
   }
 };
 </script>
