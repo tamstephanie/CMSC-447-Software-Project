@@ -1,25 +1,13 @@
 <template>
   <v-data-table
-    v-model="selected"
     :headers="headers"
     :items="missions"
     :pagination.sync="pagination"
-    select-all
     item-key="uuid"
     class="elevation-1"
   >
     <template slot="headers" slot-scope="props">
       <tr>
-        <th>
-          <v-checkbox
-            :input-value="props.all"
-            :indeterminate="props.indeterminate"
-            primary
-            hide-details
-            @click.stop="toggleAll"
-          ></v-checkbox>
-        </th>
-
         <th
           class="subheading text-xs-center black--text"
           v-for="header in props.headers"
@@ -35,17 +23,12 @@
     </template>
 
     <template slot="items" slot-scope="props">
-      <tr :active="props.selected" @click.stop="props.selected = !props.selected">
-        <td>
-          <v-checkbox :input-value="props.selected" primary hide-details></v-checkbox>
-        </td>
-        <td class="text-xs-center">{{ props.item.uuid }}</td>
-        <td class="text-xs-center">{{ props.item.date }}</td>
-        <td class="text-xs-center">{{ props.item.location }}</td>
-        <td class="text-xs-center">{{ props.item.responders }}</td>
-        <td class="text-xs-center">{{ props.item.events }}</td>
-        <td class="text-xs-center">{{ props.item.status }}</td>
-      </tr>
+      <td class="text-xs-center">{{ props.item.uuid }}</td>
+      <td class="text-xs-center">{{ props.item.date }}</td>
+      <td class="text-xs-center">{{ props.item.location }}</td>
+      <td class="text-xs-center">{{ props.item.responders }}</td>
+      <td class="text-xs-center">{{ props.item.events }}</td>
+      <td class="text-xs-center">{{ props.item.status }}</td>
     </template>
   </v-data-table>
 </template>
@@ -67,7 +50,7 @@ export default {
         value: false,
         uuid: 1,
         date: "2018-11-30 13:05:00",
-        location: "Baltimore, MD 21250",
+        location: "Annapolis, MD 20920",
         responders: 3,
         events: 5,
         status: "completed"
@@ -76,7 +59,7 @@ export default {
         value: false,
         uuid: 2,
         date: "2018-11-30 14:40:00",
-        location: "Silver Spring, MD 20904",
+        location: "Silver Spring, MD 20910",
         responders: 1,
         events: 2,
         status: "in-progress"
@@ -85,7 +68,7 @@ export default {
         value: false,
         uuid: 3,
         date: "2018-11-30 14:42:00",
-        location: "Silver Spring, MD 20910",
+        location: "Baltimore, MD 21250",
         responders: 5,
         events: 3,
         status: "claimed"
@@ -96,14 +79,6 @@ export default {
     source: String
   },
   methods: {
-    toggleAll () {
-      if (this.selected.length) {
-        this.selected = []
-      }
-      else {
-        this.selected = this.missions.slice()
-      }
-    },
     changeSort (column) {
       if (this.pagination.sortBy === column) {
         this.pagination.descending = !this.pagination.descending
